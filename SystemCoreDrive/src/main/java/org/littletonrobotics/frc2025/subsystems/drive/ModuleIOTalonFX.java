@@ -107,7 +107,8 @@ public class ModuleIOTalonFX implements ModuleIO {
     // Configure absolute encoder and set position on turn talon
     turnAbsolutePosition =
         () ->
-            Rotation2d.fromRadians(encoder.getVoltage() / 2.2 * 2.0 * Math.PI).plus(encoderOffset);
+            Rotation2d.fromRadians((double) encoder.getValue() / 3200 * 2.0 * Math.PI)
+                .plus(encoderOffset);
     tryUntilOk(5, () -> turnTalon.setPosition(turnAbsolutePosition.get().getRotations(), 0.25));
 
     // Create drive status signals
