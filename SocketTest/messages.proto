@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package test;
+
+message InputMessage {
+  int64 seqnum = 1;
+  string message = 2;
+}
+
+message OutputMessage {
+  int64 seqnum = 1;
+  string message = 2;
+}
