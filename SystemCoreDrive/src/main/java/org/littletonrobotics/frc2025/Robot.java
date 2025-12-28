@@ -50,6 +50,7 @@ public class Robot extends LoggedRobot {
       case REAL:
         // Running on a real robot, log to a USB stick ("/U/logs")
         Logger.addDataReceiver(new WPILOGWriter());
+        // Logger.addDataReceiver(new WPILOGXZWriter());
         Logger.addDataReceiver(new NT4Publisher());
         break;
 
@@ -64,6 +65,14 @@ public class Robot extends LoggedRobot {
         String logPath = LogFileUtil.findReplayLog();
         Logger.setReplaySource(new WPILOGReader(logPath));
         Logger.addDataReceiver(new WPILOGWriter(LogFileUtil.addPathSuffix(logPath, "_sim")));
+        // String inPath = LogFileUtil.findReplayLog();
+        // String outPath = LogFileUtil.addPathSuffix(inPath, "_sim");
+        // Logger.setReplaySource(inPath.endsWith(".wpilogxz") ? new WPILOGXZReader(inPath) :
+        // new WPILOGReader(inPath));
+        // if (outPath.endsWith(".wpilogxz")) {
+        //   outPath = outPath.substring(0, outPath.length() - 2);
+        // }
+        // Logger.addDataReceiver(new WPILOGWriter(outPath));
         break;
     }
 
